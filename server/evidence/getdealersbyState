@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Tue, 10 Nov 2026 19:22:30 GMT
+Server: WSGIServer/0.2 CPython/3.11.15
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 271
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+{"status": 200, "dealers": [{"_id": "6af3535e3e4ba800f6e3b656", "id": 8, "city": "Topeka", "state": "Kansas", "address": "288 Larry Place", "zip": "66642", "lat": "39.0429", "long": "-95.7697", "short_name": "Bytecard", "full_name": "Bytecard Car Dealership", "__v": 0}]}

@@ -1,0 +1,3 @@
+Command: POST /djangoapp/logout using the login session cookie
+Response:
+{"status": "Logged out"}

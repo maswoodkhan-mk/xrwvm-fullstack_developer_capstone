@@ -1,0 +1,3 @@
+Command: POST /djangoapp/login with a valid test account
+Response:
+{"userName": "capstone_test_1794337913", "status": "Authenticated"}

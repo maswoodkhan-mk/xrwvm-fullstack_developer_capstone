@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Tue, 10 Nov 2026 19:22:30 GMT
+Server: WSGIServer/0.2 CPython/3.11.15
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 1149
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+{"CarModels": [{"CarMake": "Toyota", "CarModel": "Camry", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Toyota", "CarModel": "Corolla", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Toyota", "CarModel": "Prius", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Honda", "CarModel": "Civic", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Honda", "CarModel": "Accord", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Honda", "CarModel": "CR-V", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Ford", "CarModel": "Mustang", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Ford", "CarModel": "Focus", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Ford", "CarModel": "Explorer", "Year": 2022, "Type": "Sedan"}, {"CarMake": "BMW", "CarModel": "X3", "Year": 2022, "Type": "Sedan"}, {"CarMake": "BMW", "CarModel": "X5", "Year": 2022, "Type": "Sedan"}, {"CarMake": "BMW", "CarModel": "3 Series", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Mercedes-Benz", "CarModel": "C-Class", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Mercedes-Benz", "CarModel": "E-Class", "Year": 2022, "Type": "Sedan"}, {"CarMake": "Mercedes-Benz", "CarModel": "GLC", "Year": 2022, "Type": "Sedan"}]}

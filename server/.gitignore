@@ -1,0 +1,25 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+djangoapp/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+djangoenv/
+venv/
+
+# Node.js
+node_modules/
+frontend/node_modules/
+
+# Local backups
+*.backup
+*.bak
+*.orig
+
+# Editor and operating-system files
+.DS_Store
+.vscode/
