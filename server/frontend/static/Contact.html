@@ -6,28 +6,68 @@
   <title>Contact Us | Dealerships</title>
   <link rel="stylesheet" href="/static/bootstrap.min.css">
   <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .contact-banner {
+      text-align: center;
+      padding: 25px;
+      background: #e9f7f7;
+      margin-top: 25px;
+    }
+    .contact-image {
+      display: block;
+      width: 100%;
+      max-width: 650px;
+      height: 280px;
+      object-fit: cover;
+      margin: 20px auto;
+      border-radius: 8px;
+    }
+    .contact-card {
+      max-width: 800px;
+      margin: 25px auto;
+      padding: 25px;
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise">
+  <nav class="navbar navbar-expand-lg navbar-light"
+       style="background-color: darkturquoise; min-height: 80px;">
     <div class="container-fluid">
       <h2 class="me-5">Dealerships</h2>
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-        <li class="nav-item"><a class="nav-link active" href="/contact">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/contact">Contact Us</a></li>
       </ul>
     </div>
   </nav>
-  <main class="container my-5">
-    <h1>Contact Us</h1>
-    <p>We're here to help you find the right dealership and answer your questions.</p>
-    <div class="card p-4 mt-4">
-      <h3>Customer Support</h3>
-      <p><strong>Email:</strong> support@dealerships.example</p>
-      <p><strong>Phone:</strong> +1-800-555-0142</p>
-      <p><strong>Office:</strong> Customer Support, Dealership Services</p>
-      <p>For questions about dealerships, vehicle information, or reviews, please contact our support team.</p>
-    </div>
+
+  <main class="container">
+    <section class="contact-banner">
+      <h1>Contact Us</h1>
+      <p>We're here to help with dealership information, vehicle enquiries, and customer support.</p>
+    </section>
+
+    <img class="contact-image"
+         src="/static/car_dealership.jpg"
+         alt="Cars at a dealership">
+
+    <section class="card contact-card">
+      <h2>Customer Support</h2>
+      <p>Have a question? Contact our support team for assistance with dealership details, vehicle information, and customer reviews.</p>
+
+      <h4>Email</h4>
+      <p><a href="mailto:support@dealerships.example">support@dealerships.example</a></p>
+
+      <h4>Phone</h4>
+      <p>+1-800-555-0142</p>
+
+      <h4>Office</h4>
+      <p>Customer Support Department<br>Dealership Services</p>
+
+      <h4>Support Hours</h4>
+      <p>Monday–Friday, 9:00 AM–5:00 PM</p>
+    </section>
   </main>
 </body>
 </html>
