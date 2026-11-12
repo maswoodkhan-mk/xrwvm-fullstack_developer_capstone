@@ -23,19 +23,25 @@ const Header = () => {
     }
   };
     
-//The default home page items are the login details panel
-let home_page_items =  <div></div>
+// Login/logout links and current username
+let curr_user = sessionStorage.getItem("username");
+let home_page_items;
 
-//Gets the username in the current session
-let curr_user = sessionStorage.getItem('username')
-
-//If the user is logged in, show the username and logout option on home page
-if ( curr_user !== null &&  curr_user !== "") {
-    home_page_items = <div className="input_panel">
-      <text className='username'>{sessionStorage.getItem("username")}</text>
-    <a className="nav_item" href="/djangoapp/logout" onClick={logout}>Logout</a>
-  </div>
+if (curr_user) {
+  home_page_items = (
+    <div className="input_panel">
+      <span className="username">{curr_user}</span>
+      <a className="nav_item" href="/djangoapp/logout" onClick={logout}>Logout</a>
+    </div>
+  );
+} else {
+  home_page_items = (
+    <div className="input_panel">
+      <a className="nav_item" href="/login">Login</a>
+    </div>
+  );
 }
+
     return (
         <div>
           <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor:"darkturquoise",height:"1in"}}>

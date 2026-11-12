@@ -34,7 +34,7 @@ const PostReview = () => {
 
     let model_split = model.split(" ");
     let make_chosen = model_split[0];
-    let model_chosen = model_split[1];
+    let model_chosen = model.substring(make_chosen.length + 1);
 
     let jsoninput = JSON.stringify({
       "name": name,

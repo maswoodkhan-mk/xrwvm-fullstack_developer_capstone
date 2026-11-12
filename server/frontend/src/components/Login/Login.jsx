@@ -28,7 +28,7 @@ const Login = ({ onClose }) => {
     const json = await res.json();
     if (json.status != null && json.status === "Authenticated") {
         sessionStorage.setItem('username', json.userName);
-        setOpen(false);        
+        window.location.href = "/";        
     }
     else {
       alert("The user could not be authenticated.")
@@ -63,7 +63,6 @@ const Login = ({ onClose }) => {
               <input className="action_button" type="submit" value="Login"/>
               <input className="action_button" type="button" value="Cancel" onClick={()=>setOpen(false)}/>
               </div>
-              <a className="loginlink" href="/register">Register Now</a>
           </form>
       </div>
     </div>

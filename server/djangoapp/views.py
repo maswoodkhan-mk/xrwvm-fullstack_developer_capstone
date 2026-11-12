@@ -11,6 +11,7 @@
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 import logging
+import os
 import json
 from django.views.decorators.csrf import csrf_exempt
 # from .populate import initiate
@@ -63,3 +64,91 @@ def login_user(request):
 # Create a `add_review` view to submit a review
 # def add_review(request):
 # ...
+
+
+from .restapis import get_request, post_review
+
+@csrf_exempt
+def get_dealers(request, state=None):
+    endpoint = "fetchDealers" + ("/" + state if state else "")
+    dealers = get_request(endpoint)
+    return JsonResponse({"status": 200, "dealers": dealers or []})
+
+@csrf_exempt
+def get_cars(request):
+    data_file = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "database", "data", "car_records.json"
+    )
+    try:
+        with open(data_file, "r", encoding="utf-8") as f:
+            records = json.load(f).get("cars", [])
+
+        unique_cars = {}
+        for car in records:
+            key = (car.get("make"), car.get("model"))
+            if all(key) and key not in unique_cars:
+                unique_cars[key] = {
+                    "CarMake": key[0],
+                    "CarModel": key[1]
+                }
+
+        return JsonResponse({
+            "status": 200,
+            "CarModels": list(unique_cars.values())
+        })
+    except (OSError, json.JSONDecodeError) as error:
+        logger.exception("Unable to load car records: %s", error)
+        return JsonResponse({"status": 500, "CarModels": []}, status=500)
+
+
+@csrf_exempt
+def getallcarmakes(request):
+    result = get_cars(request)
+    data = json.loads(result.content)
+    return JsonResponse({
+        "status": data["status"],
+        "CarMakes": data["CarModels"]
+    })
+
+
+@csrf_exempt
+def add_review(request):
+    if request.method != "POST":
+        return JsonResponse({"status": 405, "error": "POST required"}, status=405)
+
+    try:
+        data = json.loads(request.body)
+        required = [
+            "name", "dealership", "review", "purchase_date",
+            "car_make", "car_model", "car_year"
+        ]
+        if any(data.get(field) in (None, "") for field in required):
+            return JsonResponse(
+                {"status": 400, "error": "All details are mandatory"},
+                status=400
+            )
+
+        data["purchase"] = True
+        saved = post_review(data)
+        if saved is None:
+            return JsonResponse(
+                {"status": 500, "error": "Could not save review"},
+                status=500
+            )
+
+        return JsonResponse({"status": 200, "review": saved})
+    except (json.JSONDecodeError, TypeError, ValueError) as error:
+        return JsonResponse({"status": 400, "error": str(error)}, status=400)
+
+@csrf_exempt
+def get_dealer_details(request, dealer_id):
+    dealer = get_request("fetchDealer/" + str(dealer_id))
+    if isinstance(dealer, dict):
+        dealer = [dealer]
+    return JsonResponse({"status": 200, "dealer": dealer or []})
+
+@csrf_exempt
+def get_dealer_reviews(request, dealer_id):
+    reviews = get_request("fetchReviews/dealer/" + str(dealer_id))
+    return JsonResponse({"status": 200, "reviews": reviews or []})
